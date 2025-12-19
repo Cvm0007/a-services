@@ -1,0 +1,144 @@
+import { Link } from 'react-router-dom';
+import { FiMail, FiPhone, FiMapPin, FiFacebook, FiTwitter, FiInstagram } from 'react-icons/fi';
+
+const Footer = () => {
+  return (
+    <footer className="bg-gray-900 text-white">
+      <div className="container mx-auto px-4 py-12">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+          {/* Company Info */}
+          <div>
+            <div className="flex items-center space-x-2 mb-4">
+              <div className="w-8 h-8 bg-primary-600 rounded-lg flex items-center justify-center">
+                <span className="text-white font-bold text-lg">A</span>
+              </div>
+              <span className="text-xl font-bold">Toy Services</span>
+            </div>
+            <p className="text-gray-300 mb-4">
+              Your trusted partner for quality toys and educational products. 
+              Safe, fun, and enriching toys for children of all ages.
+            </p>
+            <div className="flex space-x-4">
+              <a href="#" className="text-gray-300 hover:text-white transition-colors">
+                <FiFacebook className="w-5 h-5" />
+              </a>
+              <a href="#" className="text-gray-300 hover:text-white transition-colors">
+                <FiTwitter className="w-5 h-5" />
+              </a>
+              <a href="#" className="text-gray-300 hover:text-white transition-colors">
+                <FiInstagram className="w-5 h-5" />
+              </a>
+            </div>
+          </div>
+
+          {/* Quick Links */}
+          <div>
+            <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
+            <ul className="space-y-2">
+              <li>
+                <Link to="/" className="text-gray-300 hover:text-white transition-colors">
+                  Home
+                </Link>
+              </li>
+              <li>
+                <Link to="/browse" className="text-gray-300 hover:text-white transition-colors">
+                  Browse Products
+                </Link>
+              </li>
+              <li>
+                <Link to="/about" className="text-gray-300 hover:text-white transition-colors">
+                  About Us
+                </Link>
+              </li>
+              <li>
+                <Link to="/contact" className="text-gray-300 hover:text-white transition-colors">
+                  Contact
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Categories */}
+          <div>
+            <h3 className="text-lg font-semibold mb-4">Categories</h3>
+            <ul className="space-y-2">
+              <li>
+                <Link to="/browse?category=delhi" className="text-gray-300 hover:text-white transition-colors">
+                  Delhi Services
+                </Link>
+              </li>
+              <li>
+                <Link to="/browse?category=mumbai" className="text-gray-300 hover:text-white transition-colors">
+                  Mumbai Services
+                </Link>
+              </li>
+              <li>
+                <Link to="/browse?category=bengaluru" className="text-gray-300 hover:text-white transition-colors">
+                  Bengaluru Services
+                </Link>
+              </li>
+              <li>
+                <Link to="/browse?category=hyderabad" className="text-gray-300 hover:text-white transition-colors">
+                  Hyderabad Services
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Contact Info */}
+          <div>
+            <h3 className="text-lg font-semibold mb-4">Contact Info</h3>
+            <div className="space-y-3">
+              <div className="flex items-center space-x-3">
+                <FiMail className="w-5 h-5 text-primary-400" />
+                <span className="text-gray-300">info@atoyservices.com</span>
+              </div>
+              <div className="flex items-center space-x-3">
+                <FiPhone className="w-5 h-5 text-primary-400" />
+                <span className="text-gray-300">+1 (987) 765-4321</span>
+              </div>
+              <div className="flex items-center space-x-3">
+                <FiMapPin className="w-5 h-5 text-primary-400" />
+                <span className="text-gray-300">123 AToy Street, Fun City, FC 12345</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom Section */}
+        <div className="border-t border-gray-800 mt-8 pt-8">
+          <div className="flex flex-col md:flex-row justify-between items-center">
+            <div className="text-gray-300 text-sm mb-4 md:mb-0">
+              © 2025 A Toy Services. All rights reserved.
+            </div>
+            <div className="flex flex-wrap space-x-6 text-sm">
+              <Link to="/privacy" className="text-gray-300 hover:text-white transition-colors">
+                Privacy Policy
+              </Link>
+              <Link to="/terms" className="text-gray-300 hover:text-white transition-colors">
+                Terms of Service
+              </Link>
+              <Link to="/safety" className="text-gray-300 hover:text-white transition-colors">
+                Safety Information
+              </Link>
+              <Link to="/shipping" className="text-gray-300 hover:text-white transition-colors">
+                Shipping & Returns
+              </Link>
+            </div>
+          </div>
+        </div>
+
+        {/* Disclaimer */}
+        <div className="mt-6 p-4 bg-gray-800 rounded-lg">
+          <p className="text-gray-300 text-sm text-center">
+            <strong>Important Notice:</strong> All appointment requests are handled manually offline. 
+            No payments are processed online through this website. For product inquiries and appointments, 
+            please use our contact forms or call us directly.
+          </p>
+        </div>
+      </div>
+    </footer>
+  );
+};
+
+export default Footer;

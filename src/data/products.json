@@ -1,0 +1,365 @@
+[
+  {
+    "id": 1,
+    "title": "Senior Relaxation Massage",
+    "slug": "senior-relaxation-massage",
+    "gender": "Senior",
+    "price": 6999,
+    "ageMin": 40,
+    "ageMax": 65,
+    "services": "Gentle Body Massage",
+    "tags": ["Senior Care", "Gentle Therapy"],
+    "safetyBadges": ["Low Pressure", "Safe for Seniors"],
+    "shortDesc": "Gentle massage therapy designed for senior wellness.",
+    "longDesc": "Uses light pressure techniques to improve circulation, reduce stiffness, and promote relaxation safely.",
+    "images": {
+      "thumbnail": "https://images.unsplash.com/photo-1596178060671-7a80dc8059ea?w=400&h=300&fit=crop",
+      "gallery": [
+        "https://images.unsplash.com/photo-1596178060671-7a80dc8059ea?w=600&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=600&h=400&fit=crop"
+      ]
+    }
+  },
+  {
+    "id": 2,
+    "title": "Corporate Professionals Massage",
+    "slug": "corporate-professionals-massage",
+    "gender": "Unisex",
+    "price": 7299,
+    "ageMin": 22,
+    "ageMax": 45,
+    "services": "Head Massage, Neck & Shoulder Massage",
+    "tags": ["Corporate", "Desk Stress Relief"],
+    "safetyBadges": ["Workplace Friendly"],
+    "shortDesc": "Quick stress-relief massage for corporate professionals.",
+    "longDesc": "Targets neck, shoulders, and head to relieve desk-job stress and mental fatigue.",
+    "images": {
+      "thumbnail": "https://images.unsplash.com/photo-1600334129128-685c5582fd35?w=400&h=300&fit=crop",
+      "gallery": [
+        "https://images.unsplash.com/photo-1600334129128-685c5582fd35?w=600&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1556228724-4b8c45b8f0c3?w=600&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1519824145371-296894a0daa9?w=600&h=400&fit=crop"
+      ]
+    }
+  },
+  {
+    "id": 3,
+    "title": "Massage Services Across India",
+    "slug": "massage-services-across-india",
+    "price": 7999,
+    "ageMin": 18,
+    "ageMax": 40,
+    "material": "Professional Oils & Equipment",
+    "services": "Head Massage, Body Massage, Full Body Massage",
+    "tags": ["Head Massage", "Body Massage", "Full Body Massage"],
+    "safetyBadges": ["Certified Therapists", "Hygienic", "Premium Oils"],
+    "shortDesc": "Professional massage services delivered by trained experts across India.",
+    "longDesc": "Our massage services are available across major cities in India, offering head, body, and full body massage therapies. All sessions are conducted by certified therapists using premium quality oils and hygienic equipment. Ideal for stress relief, muscle relaxation, and overall wellness.",
+    "images": {
+      "thumbnail": "https://images.unsplash.com/photo-1556228724-4b8c45b8f0c3?w=400&h=300&fit=crop",
+      "gallery": [
+        "https://images.unsplash.com/photo-1556228724-4b8c45b8f0c3?w=600&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1600334129128-685c5582fd35?w=600&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1587019158091-1a103c5dd17f?w=600&h=400&fit=crop"
+      ]
+    }
+  },
+  {
+    "id": 4,
+    "title": "Luxury Full Body Massage",
+    "slug": "luxury-full-body-massage",
+    "price": 9999,
+    "ageMin": 18,
+    "ageMax": 45,
+    "material": "Aromatic Essential Oils",
+    "services": "Full Body Massage",
+    "tags": ["Relaxation", "Luxury Massage", "Full Body Massage"],
+    "safetyBadges": ["Spa Grade", "Certified", "Non-Invasive"],
+    "shortDesc": "A premium full body massage for deep relaxation and rejuvenation.",
+    "longDesc": "This luxury massage therapy focuses on complete body relaxation using aromatic essential oils. Designed for individuals seeking stress relief, improved circulation, and muscle recovery.",
+    "images": {
+      "thumbnail": "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=400&h=300&fit=crop",
+      "gallery": [
+        "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=600&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1519824145371-296894a0daa9?w=600&h=400&fit=crop"
+      ]
+    }
+  },
+  {
+    "id": 5,
+    "title": "Therapeutic Head Massage",
+    "slug": "therapeutic-head-massage",
+    "price": 3499,
+    "ageMin": 18,
+    "ageMax": 40,
+    "material": "Herbal Oils",
+    "services": "Head Massage",
+    "tags": ["Head Massage", "Stress Relief", "Therapy"],
+    "safetyBadges": ["Herbal", "Safe Practice"],
+    "shortDesc": "Relieve stress and headaches with expert head massage therapy.",
+    "longDesc": "This head massage therapy targets pressure points to relieve headaches, reduce stress, and improve sleep quality. Uses herbal oils and gentle techniques.",
+    "images": {
+      "thumbnail": "https://images.unsplash.com/photo-1616401789396-2d9d1f45f2ed?w=400&h=300&fit=crop",
+      "gallery": [
+        "https://images.unsplash.com/photo-1616401789396-2d9d1f45f2ed?w=600&h=400&fit=crop"
+      ]
+    }
+  },
+  {
+    "id": 6,
+    "title": "Deep Tissue Body Massage",
+    "slug": "deep-tissue-body-massage",
+    "price": 8999,
+    "ageMin": 20,
+    "ageMax": 45,
+    "material": "Medicinal Oils",
+    "services": "Body Massage",
+    "tags": ["Deep Tissue", "Body Massage"],
+    "safetyBadges": ["Professional Grade", "Certified"],
+    "shortDesc": "Intensive massage focused on muscle pain and stiffness.",
+    "longDesc": "Deep tissue massage targets chronic muscle tension and pain using slow strokes and firm pressure. Recommended for active individuals and working professionals.",
+    "images": {
+      "thumbnail": "https://images.unsplash.com/photo-1576765607924-3f7b8410e9c4?w=400&h=300&fit=crop",
+      "gallery": [
+        "https://images.unsplash.com/photo-1576765607924-3f7b8410e9c4?w=600&h=400&fit=crop"
+      ]
+    }
+  },
+  {
+    "id": 7,
+    "title": "Ayurvedic Massage Therapy",
+    "slug": "ayurvedic-massage-therapy",
+    "price": 7499,
+    "ageMin": 18,
+    "ageMax": 50,
+    "material": "Ayurvedic Oils",
+    "services": "Full Body Massage",
+    "tags": ["Ayurvedic", "Healing", "Massage"],
+    "safetyBadges": ["Ayush Inspired", "Natural Oils"],
+    "shortDesc": "Traditional Ayurvedic massage for holistic healing.",
+    "longDesc": "This therapy follows ancient Ayurvedic principles to balance body energies, detoxify, and rejuvenate the mind and body using herbal oils.",
+    "images": {
+      "thumbnail": "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=400&h=300&fit=crop",
+      "gallery": [
+        "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=600&h=400&fit=crop"
+      ]
+    }
+  },
+  {
+    "id": 8,
+    "title": "Couple Massage Session",
+    "slug": "couple-massage-session",
+    "price": 12999,
+    "ageMin": 21,
+    "ageMax": 45,
+    "material": "Spa Oils & Towels",
+    "services": "Full Body Massage",
+    "tags": ["Couple Massage", "Relaxation"],
+    "safetyBadges": ["Private Room", "Certified Therapists"],
+    "shortDesc": "Relax together with a synchronized couple massage experience.",
+    "longDesc": "Designed for couples seeking a relaxing and rejuvenating experience together in a calm and private environment.",
+    "images": {
+      "thumbnail": "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=400&h=300&fit=crop",
+      "gallery": [
+        "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=600&h=400&fit=crop"
+      ]
+    }
+  },
+  {
+    "id": 9,
+    "title": "Corporate Stress Relief Massage",
+    "slug": "corporate-stress-relief-massage",
+    "price": 6999,
+    "ageMin": 22,
+    "ageMax": 40,
+    "material": "Quick Relief Oils",
+    "services": "Head Massage, Body Massage",
+    "tags": ["Corporate", "Stress Relief"],
+    "safetyBadges": ["Workplace Safe"],
+    "shortDesc": "Quick stress relief massage designed for corporate professionals.",
+    "longDesc": "Focused massage sessions ideal for professionals dealing with long working hours and high stress levels.",
+    "images": {
+      "thumbnail": "https://images.unsplash.com/photo-1596178060671-7a80dc8059ea?w=400&h=300&fit=crop",
+      "gallery": [
+        "https://images.unsplash.com/photo-1596178060671-7a80dc8059ea?w=600&h=400&fit=crop"
+      ]
+    }
+  },
+  {
+    "id": 10,
+    "title": "Massage Services in Mumbai",
+    "slug": "massage-services-mumbai",
+    "city": "Mumbai",
+    "price": 8499,
+    "ageMin": 18,
+    "ageMax": 40,
+    "services": "Head Massage, Body Massage, Full Body Massage",
+    "tags": ["Mumbai", "Urban Wellness", "Full Body Massage"],
+    "safetyBadges": ["Certified Therapists", "Hygienic"],
+    "shortDesc": "Premium massage services tailored for Mumbai’s fast-paced lifestyle.",
+    "longDesc": "Designed for working professionals and urban residents, these services focus on stress relief, muscle recovery, and relaxation using premium oils and trained therapists.",
+    "images": {
+      "thumbnail": "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=400&h=300&fit=crop",
+      "gallery": [
+        "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=600&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1519824145371-296894a0daa9?w=600&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1600334129128-685c5582fd35?w=600&h=400&fit=crop"
+      ]
+    }
+  },
+  {
+    "id": 11,
+    "title": "Massage Services in Delhi NCR",
+    "slug": "massage-services-delhi-ncr",
+    "city": "Delhi NCR",
+    "price": 7999,
+    "ageMin": 18,
+    "ageMax": 45,
+    "services": "Body Massage, Deep Tissue Massage",
+    "tags": ["Delhi NCR", "Deep Tissue", "Therapy"],
+    "safetyBadges": ["Professional Grade", "Safe Practice"],
+    "shortDesc": "Therapeutic massage solutions across Delhi NCR.",
+    "longDesc": "Focused on posture correction, muscle pain relief, and fatigue caused by long commutes and office hours.",
+    "images": {
+      "thumbnail": "https://images.unsplash.com/photo-1576765607924-3f7b8410e9c4?w=400&h=300&fit=crop",
+      "gallery": [
+        "https://images.unsplash.com/photo-1576765607924-3f7b8410e9c4?w=600&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=600&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1596178060671-7a80dc8059ea?w=600&h=400&fit=crop"
+      ]
+    }
+  },
+  {
+    "id": 12,
+    "title": "Massage Services in Bengaluru",
+    "slug": "massage-services-bengaluru",
+    "city": "Bengaluru",
+    "price": 7699,
+    "ageMin": 18,
+    "ageMax": 38,
+    "services": "Head Massage, Body Massage",
+    "tags": ["Bengaluru", "IT Professionals", "Stress Relief"],
+    "safetyBadges": ["Certified", "Clean & Safe"],
+    "shortDesc": "Massage therapy designed for IT and startup professionals.",
+    "longDesc": "Relieves screen fatigue, neck stiffness, and mental burnout common in tech-driven work environments.",
+    "images": {
+      "thumbnail": "https://images.unsplash.com/photo-1600334129128-685c5582fd35?w=400&h=300&fit=crop",
+      "gallery": [
+        "https://images.unsplash.com/photo-1600334129128-685c5582fd35?w=600&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1556228724-4b8c45b8f0c3?w=600&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1587019158091-1a103c5dd17f?w=600&h=400&fit=crop"
+      ]
+    }
+  },
+  {
+    "id": 13,
+    "title": "Massage Services in Pune",
+    "slug": "massage-services-pune",
+    "city": "Pune",
+    "price": 7299,
+    "ageMin": 18,
+    "ageMax": 40,
+    "services": "Ayurvedic Massage, Full Body Massage",
+    "tags": ["Pune", "Ayurvedic", "Wellness"],
+    "safetyBadges": ["Herbal Oils", "Ayush Inspired"],
+    "shortDesc": "Ayurvedic-based wellness massage services in Pune.",
+    "longDesc": "Combines ancient Ayurvedic techniques with modern relaxation practices for detox and balance.",
+    "images": {
+      "thumbnail": "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=400&h=300&fit=crop",
+      "gallery": [
+        "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=600&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1587559070757-f72a388edbba?w=600&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=600&h=400&fit=crop"
+      ]
+    }
+  },
+  {
+    "id": 14,
+    "title": "Massage Services in Hyderabad",
+    "slug": "massage-services-hyderabad",
+    "city": "Hyderabad",
+    "price": 7399,
+    "ageMin": 18,
+    "ageMax": 42,
+    "services": "Body Massage, Relaxation Therapy",
+    "tags": ["Hyderabad", "Relaxation", "Wellness"],
+    "safetyBadges": ["Trained Staff", "Premium Oils"],
+    "shortDesc": "Relaxation-focused massage services across Hyderabad.",
+    "longDesc": "Ideal for professionals and families seeking calm, rejuvenation, and stress relief.",
+    "images": {
+      "thumbnail": "https://images.unsplash.com/photo-1519824145371-296894a0daa9?w=400&h=300&fit=crop",
+      "gallery": [
+        "https://images.unsplash.com/photo-1519824145371-296894a0daa9?w=600&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=600&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1587019158091-1a103c5dd17f?w=600&h=400&fit=crop"
+      ]
+    }
+  },
+  {
+    "id": 15,
+    "title": "Massage Services for Men",
+    "slug": "massage-services-for-men",
+    "gender": "Male",
+    "price": 7999,
+    "ageMin": 18,
+    "ageMax": 45,
+    "services": "Deep Tissue Massage, Body Massage",
+    "tags": ["Men", "Muscle Recovery", "Deep Tissue"],
+    "safetyBadges": ["Male Therapists Available", "Professional"],
+    "shortDesc": "Massage therapy focused on muscle recovery and strength relief.",
+    "longDesc": "Designed for active lifestyles, gym recovery, and work-related physical stress using firm pressure techniques.",
+    "images": {
+      "thumbnail": "https://images.unsplash.com/photo-1576765607924-3f7b8410e9c4?w=400&h=300&fit=crop",
+      "gallery": [
+        "https://images.unsplash.com/photo-1576765607924-3f7b8410e9c4?w=600&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=600&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1596178060671-7a80dc8059ea?w=600&h=400&fit=crop"
+      ]
+    }
+  },
+  {
+    "id": 16,
+    "title": "Massage Services for Women",
+    "slug": "massage-services-for-women",
+    "gender": "Female",
+    "price": 7499,
+    "ageMin": 18,
+    "ageMax": 40,
+    "services": "Relaxation Massage, Full Body Massage",
+    "tags": ["Women", "Relaxation", "Wellness"],
+    "safetyBadges": ["Female Therapists", "Private Session"],
+    "shortDesc": "Gentle and relaxing massage services for women.",
+    "longDesc": "Focused on relaxation, hormonal balance, and stress relief in a comfortable and private environment.",
+    "images": {
+      "thumbnail": "https://images.unsplash.com/photo-1556228724-4b8c45b8f0c3?w=400&h=300&fit=crop",
+      "gallery": [
+        "https://images.unsplash.com/photo-1556228724-4b8c45b8f0c3?w=600&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=600&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1587019158091-1a103c5dd17f?w=600&h=400&fit=crop"
+      ]
+    }
+  },
+  {
+    "id": 17,
+    "title": "Unisex Massage Services",
+    "slug": "unisex-massage-services",
+    "gender": "Unisex",
+    "price": 7999,
+    "ageMin": 18,
+    "ageMax": 45,
+    "services": "Head Massage, Body Massage, Full Body Massage",
+    "tags": ["Unisex", "Wellness", "Relaxation"],
+    "safetyBadges": ["Certified", "Safe Practice"],
+    "shortDesc": "Massage services suitable for all genders.",
+    "longDesc": "Balanced massage techniques that cater to relaxation, stress relief, and overall wellness.",
+    "images": {
+      "thumbnail": "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=400&h=300&fit=crop",
+      "gallery": [
+        "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=600&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1519824145371-296894a0daa9?w=600&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1600334129128-685c5582fd35?w=600&h=400&fit=crop"
+      ]
+    }
+  }
+  
+]
