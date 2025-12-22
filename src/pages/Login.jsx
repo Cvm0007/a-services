@@ -6,21 +6,34 @@ import * as yup from 'yup';
 import { FiEye, FiEyeOff, FiMail, FiLock } from 'react-icons/fi';
 import useAuthStore from '../store/authStore';
 
+/**
+ * Validation schema for user login form
+ * Ensures email and password fields are properly filled with valid data
+ */
 const schema = yup.object().shape({
   email: yup.string().email('Invalid email').required('Email is required'),
   password: yup.string().required('Password is required'),
 });
 
+/**
+ * Login Page - User authentication interface with comprehensive validation
+ * Features: Form validation, password visibility toggle, redirect handling, error management
+ * Can be modified: Add remember me option, social login, enhanced security features
+ */
 const Login = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const login = useAuthStore((state) => state.login);
-  const [showPassword, setShowPassword] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState('');
+  
+  // Component state management
+  const [showPassword, setShowPassword] = useState(false); // Toggle password visibility
+  const [isLoading, setIsLoading] = useState(false); // Loading state for form submission
+  const [error, setError] = useState(''); // Error message state
 
+  // Redirect destination after successful login
   const from = location.state?.from?.pathname || '/';
 
+  // React Hook Form configuration with validation
   const {
     register,
     handleSubmit,
@@ -29,16 +42,22 @@ const Login = () => {
     resolver: yupResolver(schema)
   });
 
+  /**
+ * Handle form submission for user authentication
+ * @param {Object} data - Form data including email and password
+ */
   const onSubmit = async (data) => {
     setIsLoading(true);
-    setError('');
+    setError(''); // Clear any previous errors
 
+    // Attempt to authenticate user with provided credentials
     const result = login(data.email, data.password);
 
+    // Handle authentication result
     if (result.success) {
-      navigate(from, { replace: true });
+      navigate(from, { replace: true }); // Redirect to intended destination
     } else {
-      setError(result.error);
+      setError(result.error); // Display error message
     }
 
     setIsLoading(false);

@@ -1,6 +1,11 @@
 import { Link } from 'react-router-dom';
 import { FiMail, FiPhone, FiMapPin, FiFacebook, FiTwitter, FiInstagram } from 'react-icons/fi';
 
+/**
+ * Footer Component - Comprehensive site footer with navigation and information
+ * Features: Company info, quick links, service categories, contact details, legal links
+ * Can be modified: Add new sections, update links, customize layout, add social media
+ */
 const Footer = () => {
   return (
     <footer className="bg-gray-900 text-white">
@@ -15,8 +20,8 @@ const Footer = () => {
               <span className="text-xl font-bold">Toy Services</span>
             </div>
             <p className="text-gray-300 mb-4">
-              Your trusted partner for quality toys and educational products. 
-              Safe, fun, and enriching toys for children of all ages.
+              Your trusted platform for professional wellness and therapeutic services. 
+              Connecting qualified service providers with customers seeking quality care and relaxation.
             </p>
             <div className="flex space-x-4">
               <a href="#" className="text-gray-300 hover:text-white transition-colors">
@@ -42,7 +47,12 @@ const Footer = () => {
               </li>
               <li>
                 <Link to="/browse" className="text-gray-300 hover:text-white transition-colors">
-                  Browse Products
+                  Browse Services
+                </Link>
+              </li>
+              <li>
+                <Link to="/post-ad" className="text-gray-300 hover:text-white transition-colors">
+                  Post Service
                 </Link>
               </li>
               <li>
@@ -58,28 +68,28 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Categories */}
+          {/* Services */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">Categories</h3>
+            <h3 className="text-lg font-semibold mb-4">Services</h3>
             <ul className="space-y-2">
               <li>
-                <Link to="/browse?category=delhi" className="text-gray-300 hover:text-white transition-colors">
-                  Delhi Services
+                <Link to="/browse?category=massage" className="text-gray-300 hover:text-white transition-colors">
+                  Massage Therapy
                 </Link>
               </li>
               <li>
-                <Link to="/browse?category=mumbai" className="text-gray-300 hover:text-white transition-colors">
-                  Mumbai Services
+                <Link to="/browse?category=wellness" className="text-gray-300 hover:text-white transition-colors">
+                  Wellness Services
                 </Link>
               </li>
               <li>
-                <Link to="/browse?category=bengaluru" className="text-gray-300 hover:text-white transition-colors">
-                  Bengaluru Services
+                <Link to="/browse?category=relaxation" className="text-gray-300 hover:text-white transition-colors">
+                  Relaxation Therapy
                 </Link>
               </li>
               <li>
-                <Link to="/browse?category=hyderabad" className="text-gray-300 hover:text-white transition-colors">
-                  Hyderabad Services
+                <Link to="/browse?category=spa" className="text-gray-300 hover:text-white transition-colors">
+                  Spa Services
                 </Link>
               </li>
             </ul>
@@ -112,17 +122,17 @@ const Footer = () => {
               © 2025 A Toy Services. All rights reserved.
             </div>
             <div className="flex flex-wrap space-x-6 text-sm">
-              <Link to="/privacy" className="text-gray-300 hover:text-white transition-colors">
+              <Link to="/privacy-policy" className="text-gray-300 hover:text-white transition-colors">
                 Privacy Policy
               </Link>
-              <Link to="/terms" className="text-gray-300 hover:text-white transition-colors">
+              <Link to="/terms-of-service" className="text-gray-300 hover:text-white transition-colors">
                 Terms of Service
               </Link>
-              <Link to="/safety" className="text-gray-300 hover:text-white transition-colors">
-                Safety Information
+              <Link to="/disclaimer" className="text-gray-300 hover:text-white transition-colors">
+                Disclaimer
               </Link>
-              <Link to="/shipping" className="text-gray-300 hover:text-white transition-colors">
-                Shipping & Returns
+              <Link to="/refund-policy" className="text-gray-300 hover:text-white transition-colors">
+                Refund Policy
               </Link>
             </div>
           </div>

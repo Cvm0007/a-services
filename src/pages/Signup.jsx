@@ -6,6 +6,10 @@ import * as yup from 'yup';
 import { FiEye, FiEyeOff, FiUser, FiMail, FiLock } from 'react-icons/fi';
 import useAuthStore from '../store/authStore';
 
+/**
+ * Validation schema for user registration form
+ * Ensures all required fields are properly filled with valid data
+ */
 const schema = yup.object().shape({
   name: yup.string().required('Name is required'),
   email: yup.string().email('Invalid email').required('Email is required'),
@@ -14,14 +18,22 @@ const schema = yup.object().shape({
   phone: yup.string().required('Phone number is required'),
 });
 
+/**
+ * Signup Page - User registration interface with comprehensive validation
+ * Features: Form validation, password visibility toggle, error handling, loading states
+ * Can be modified: Add new fields, customize validation, enhance UI, add social login
+ */
 const Signup = () => {
   const navigate = useNavigate();
   const signup = useAuthStore((state) => state.signup);
-  const [showPassword, setShowPassword] = useState(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState('');
+  
+  // Component state management
+  const [showPassword, setShowPassword] = useState(false); // Toggle password visibility
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false); // Toggle confirm password visibility
+  const [isLoading, setIsLoading] = useState(false); // Loading state for form submission
+  const [error, setError] = useState(''); // Error message state
 
+  // React Hook Form configuration with validation
   const {
     register,
     handleSubmit,
@@ -30,10 +42,15 @@ const Signup = () => {
     resolver: yupResolver(schema)
   });
 
+  /**
+ * Handle form submission for user registration
+ * @param {Object} data - Form data including user details
+ */
   const onSubmit = async (data) => {
     setIsLoading(true);
-    setError('');
+    setError(''); // Clear any previous errors
 
+    // Attempt to register user with provided data
     const result = signup({
       name: data.name,
       email: data.email,
@@ -41,10 +58,11 @@ const Signup = () => {
       phone: data.phone
     });
 
+    // Handle registration result
     if (result.success) {
-      navigate('/');
+      navigate('/'); // Redirect to home on successful registration
     } else {
-      setError(result.error);
+      setError(result.error); // Display error message
     }
 
     setIsLoading(false);

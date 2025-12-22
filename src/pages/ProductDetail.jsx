@@ -7,6 +7,10 @@ import * as yup from 'yup';
 import { FiArrowLeft, FiCalendar, FiClock, FiUser, FiMail, FiPhone, FiMessageSquare } from 'react-icons/fi';
 import useAuthStore from '../store/authStore';
 
+/**
+ * Validation schema for the contact form
+ * Ensures all required fields are properly filled with valid data
+ */
 const schema = yup.object().shape({
   name: yup.string().required('Name is required'),
   email: yup.string().email('Invalid email').required('Email is required'),
@@ -16,17 +20,27 @@ const schema = yup.object().shape({
   message: yup.string().required('Message is required'),
 });
 
+/**
+ * Product Detail Page - Comprehensive service listing and booking interface
+ * Features: Service details, image gallery, contact form, booking system
+ * Can be modified: Add new service features, customize booking flow, enhance UI
+ */
 const ProductDetail = () => {
+  // Get product ID from URL parameters
   const { id } = useParams();
   const navigate = useNavigate();
+  
+  // Store functions and state
   const submitContactForm = useAuthStore((state) => state.submitContactForm);
   const currentUser = useAuthStore((state) => state.currentUser);
   
+  // Component state management
   const [product] = products.find(p => p.id === parseInt(id)) ? [products.find(p => p.id === parseInt(id))] : [null];
-  const [selectedImage, setSelectedImage] = useState(0);
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitSuccess, setSubmitSuccess] = useState(false);
+  const [selectedImage, setSelectedImage] = useState(0); // Track selected image in gallery
+  const [isSubmitting, setIsSubmitting] = useState(false); // Form submission state
+  const [submitSuccess, setSubmitSuccess] = useState(false); // Success message state
 
+  // React Hook Form configuration with validation
   const {
     register,
     handleSubmit,
@@ -34,12 +48,14 @@ const ProductDetail = () => {
   } = useForm({
     resolver: yupResolver(schema),
     defaultValues: {
+      // Pre-fill form with current user data if available
       name: currentUser?.name || '',
       email: currentUser?.email || '',
       phone: currentUser?.phone || '',
     }
   });
 
+  // Handle case where product doesn't exist
   if (!product) {
     return (
       <div className="container mx-auto px-4 py-8">
@@ -54,14 +70,20 @@ const ProductDetail = () => {
     );
   }
 
+  /**
+   * Handle form submission for booking/contact request
+   * @param {Object} data - Form data including contact details and preferences
+   */
   const onSubmit = async (data) => {
     setIsSubmitting(true);
     
+    // Submit contact form with product ID and form data
     const result = submitContactForm({
       productId: product.id,
       ...data
     });
 
+    // Show success message if submission was successful
     if (result.success) {
       setSubmitSuccess(true);
     }
