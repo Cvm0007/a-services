@@ -241,15 +241,15 @@ const Home = () => {
       </section>
 
       {/* 5 Categories */}
-      <section className="bg-gray-50 py-16">
+      {/* <section className="bg-gray-50 py-16">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">Book by Category</h2>
+            <h2 className="text-3xl font-bold mb-4">Choose by Category</h2>
             <p className="text-gray-600">Find the perfect service by category</p>
           </div>
           
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {['Massage', 'Body Massage', 'Corporate', 'Luxury', 'Delhi', 'Mumbai', 'Bengaluru', 'Hyderabad'].map(category => (
+            {['Wellness','Spa', 'Relaxation', 'Bengaluru', 'Hyderabad', 'Pune'].map(category => (
               <Link 
                 key={category}
                 to={`/browse?category=${category.toLowerCase().replace(' & ', '-')}`}
@@ -265,10 +265,103 @@ const Home = () => {
             ))}
           </div>
         </div>
+      </section> */}
+      <section className="bg-gray-50 py-16">
+        <div className="container mx-auto px-4">
+          {/* Header */}
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold mb-4">Choose as per Services! you need </h2>
+            <p className="text-gray-600">
+              Find the perfect service categorised just for You.
+            </p>
+          </div>
+
+          {/* Cards */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            {[
+              {
+                title: "Massages",
+                description:
+                  "Enjoy the best relaxing and rejuvenating massage services from verified professionals.",
+                image:
+                  "https://images.unsplash.com/photo-1600334129128-685c5582fd35",
+                tags: ["Delhi", "Mumbai", "Bengaluru", "Hyderabad", "Pune"],
+              },
+              {
+                title: "Spa",
+                description:
+                  "Luxury spa experiences designed to refresh your body and calm your mind.",
+                image:
+                  "https://images.unsplash.com/photo-1556228578-567ba127e37f",
+                tags: ["Delhi", "Mumbai", "Bengaluru", "Hyderabad"],
+              },
+              {
+                title: "Wellness",
+                description:
+                  "Holistic wellness services focusing on balance, energy, and relaxation.",
+                image:
+                  "https://images.unsplash.com/photo-1540555700478-4be289fbecef",
+                tags: ["Delhi", "Mumbai", "Pune"],
+              },
+              {
+                title: "Relaxation",
+                description:
+                  "Stress-free experiences crafted to help you unwind and recharge.",
+                image:
+                  "https://images.unsplash.com/photo-1519824145371-296894a0daa9",
+                tags: ["Bengaluru", "Hyderabad", "Pune"],
+              },
+            ].map((card) => (
+              <Link
+                key={card.title}
+                to={`/browse?category=${card.title.toLowerCase()}`}
+                className="group relative h-80 rounded-xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300"
+              >
+                {/* Background Image */}
+                <div
+                  className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
+                  style={{ backgroundImage: `url(${card.image})` }}
+                />
+
+                {/* Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent transition-opacity duration-300 group-hover:from-black/90" />
+
+                {/* Content */}
+                <div className="relative z-10 h-full flex flex-col justify-end p-5 text-white">
+                  {/* Icon + Title */}
+                  <div className="flex items-center gap-3 mb-2">
+                    <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center text-lg font-bold">
+                      {card.title.charAt(0)}
+                    </div>
+                    <h3 className="text-xl font-semibold">{card.title}</h3>
+                  </div>
+
+                  {/* Description */}
+                  <p className="text-sm text-white/90 line-clamp-3 mb-4">
+                    {card.description}
+                  </p>
+
+                  {/* Tags */}
+                  <div className="flex flex-wrap gap-2">
+                    {card.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="text-xs bg-white/20 backdrop-blur px-3 py-1 rounded-full hover:bg-white/30 transition"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
       </section>
 
+
       {/* 6 CTA Section */}
-      <section className="bg-secondary-600 text-white py-16">
+      <section className="bg-secondary-600 text-white py-16 bg-bottom" style={{ backgroundImage: `url(${hero})` }}>
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-4">Ready to Find the Perfect Service?</h2>
           <p className="text-xl mb-8 text-secondary-100">

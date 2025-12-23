@@ -78,7 +78,7 @@ const Signup = () => {
               <FiUser className="w-8 h-8 text-white" />
             </div>
             <h2 className="text-3xl font-bold text-gray-900">Create Account</h2>
-            <p className="text-gray-600 mt-2">Join E-Toy Services today</p>
+            <p className="text-gray-600 mt-2">Join A-Toy Services today</p>
           </div>
 
           {/* Error Message */}
@@ -220,7 +220,7 @@ const Signup = () => {
           <div className="mt-6 p-4 bg-gray-50 rounded-lg">
             <p className="text-xs text-gray-500 text-center">
               By creating an account, you agree to our Terms of Service and Privacy Policy. 
-              All appointment requests are handled manually offline.
+              All appointment requests are handled manually offline with safety and security .
             </p>
           </div>
         </div>
