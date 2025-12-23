@@ -160,7 +160,7 @@ const Home = () => {
       />
 
       {/* 3 Trust Badges */}
-      <section className="bg-gray-50 py-12">
+      {/* <section className="bg-gray-50 py-12">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div className="text-center">
@@ -185,10 +185,62 @@ const Home = () => {
             </div>
           </div>
         </div>
+      </section> */}
+      <section className="bg-gray-50 py-14">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+
+            {/* Card 1 */}
+            <div className="group bg-white rounded-xl p-6 text-center shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-gray-100">
+              <div className="w-14 h-14 mx-auto mb-4 rounded-full bg-primary-50 flex items-center justify-center group-hover:bg-primary-100 transition">
+                <FiShield className="w-7 h-7 text-primary-600" />
+              </div>
+              <h3 className="font-semibold mb-2">Safety Certified</h3>
+              <p className="text-gray-600 text-sm">
+                All services meet verified safety standards
+              </p>
+            </div>
+
+            {/* Card 2 */}
+            <div className="group bg-white rounded-xl p-6 text-center shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-gray-100">
+              <div className="w-14 h-14 mx-auto mb-4 rounded-full bg-primary-50 flex items-center justify-center group-hover:bg-primary-100 transition">
+                <FiTruck className="w-7 h-7 text-primary-600" />
+              </div>
+              <h3 className="font-semibold mb-2">Fast Booking</h3>
+              <p className="text-gray-600 text-sm">
+                Quick confirmations & reliable scheduling
+              </p>
+            </div>
+
+            {/* Card 3 */}
+            <div className="group bg-white rounded-xl p-6 text-center shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-gray-100">
+              <div className="w-14 h-14 mx-auto mb-4 rounded-full bg-primary-50 flex items-center justify-center group-hover:bg-primary-100 transition">
+                <FiStar className="w-7 h-7 text-primary-600" />
+              </div>
+              <h3 className="font-semibold mb-2">Top Rated</h3>
+              <p className="text-gray-600 text-sm">
+                Trained professionals with high user ratings
+              </p>
+            </div>
+
+            {/* Card 4 */}
+            <div className="group bg-white rounded-xl p-6 text-center shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-gray-100">
+              <div className="w-14 h-14 mx-auto mb-4 rounded-full bg-primary-50 flex items-center justify-center group-hover:bg-primary-100 transition">
+                <FiShoppingBag className="w-7 h-7 text-primary-600" />
+              </div>
+              <h3 className="font-semibold mb-2">Curated Selection</h3>
+              <p className="text-gray-600 text-sm">
+                Premium services vetted for quality & trust
+              </p>
+            </div>
+
+          </div>
+        </div>
       </section>
 
+
       {/* 4 Featured Products */}
-      <section className="py-16">
+      {/* <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold mb-4">Most Booked Services</h2>
@@ -238,7 +290,103 @@ const Home = () => {
             </Link>
           </div>
         </div>
+      </section> */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+
+          {/* Header */}
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold mb-4">Top Rated Services</h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              Check out our most popular services that you and your body love!
+            </p>
+          </div>
+
+          {/* Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {featuredProducts.map(product => (
+              <div
+                key={product.id}
+                className="group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 hover:-translate-y-1"
+              >
+                {/* Image */}
+                <div className="relative h-52 overflow-hidden">
+                  <img
+                    src={
+                      product.images?.thumbnail ||
+                      product.image ||
+                      "/placeholder-service.jpg"
+                    }
+                    alt={product.title}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
+
+                  {/* Image Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
+
+                  {/* Price Badge */}
+                  <div className="absolute top-4 right-4 bg-white text-primary-600 font-bold px-4 py-1.5 rounded-full shadow">
+                    ${product.price}
+                  </div>
+                </div>
+
+                {/* Content */}
+                <div className="p-6 flex flex-col">
+                  <h3 className="font-semibold text-lg mb-2 group-hover:text-primary-600 transition">
+                    {product.title}
+                  </h3>
+
+                  <p className="text-gray-600 text-sm mb-4 line-clamp-2">
+                    {product.shortDesc || product.description}
+                  </p>
+
+                  {/* Meta */}
+                  <div className="flex items-center justify-between text-sm text-gray-500 mb-4">
+                    <span>
+                      Ages {product.ageMin || 18}–{product.ageMax || 65}
+                    </span>
+                    <span className="flex items-center gap-1">
+                      ⭐ Top Rated
+                    </span>
+                  </div>
+
+                  {/* Safety / Trust Badges */}
+                  <div className="flex flex-wrap gap-2 mb-5">
+                    {(product.safetyBadges || []).slice(0, 3).map(badge => (
+                      <span
+                        key={badge}
+                        className="text-xs px-3 py-1 rounded-full bg-green-50 text-green-700 border border-green-100"
+                      >
+                        {badge}
+                      </span>
+                    ))}
+                  </div>
+
+                  {/* CTA */}
+                  <Link
+                    to={`/product/${product.id}`}
+                    className="mt-auto w-full text-center py-2.5 rounded-lg bg-primary-600 text-white font-medium hover:bg-primary-700 transition"
+                  >
+                    View More
+                  </Link>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Footer CTA */}
+          <div className="text-center mt-12">
+            <Link
+              to="/browse"
+              className="inline-block px-6 py-3 rounded-full border border-primary-600 text-primary-600 hover:bg-primary-600 hover:text-white transition"
+            >
+              View All Services
+            </Link>
+          </div>
+
+        </div>
       </section>
+
 
       {/* 5 Categories */}
       {/* <section className="bg-gray-50 py-16">
@@ -363,7 +511,7 @@ const Home = () => {
       {/* 6 CTA Section */}
       <section className="bg-secondary-600 text-white py-16 bg-bottom" style={{ backgroundImage: `url(${hero})` }}>
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold mb-4">Ready to Find the Perfect Service?</h2>
+          <h2 className="text-3xl font-bold mb-4">Tired of Finding the Perfect Service? <b className="text-primary-600">Post Your Ad Now!</b></h2>
           <p className="text-xl mb-8 text-secondary-100">
             Sign up for exclusive access to service details and special offers
           </p>
