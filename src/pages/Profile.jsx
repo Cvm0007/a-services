@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { FiUser, FiMail, FiPhone, FiCalendar, FiTrash2, FiLogOut, FiEdit, FiEye, FiDollarSign, FiCreditCard, FiSettings, FiPlus, FiCheck, FiX, FiClock, FiTrendingUp, FiShield, FiMapPin, FiStar, FiSmartphone } from 'react-icons/fi';
 import useAuthStore from '../store/authStore';
@@ -23,13 +23,12 @@ const Profile = () => {
   const payments = useAuthStore((state) => state.payments);
   
   const [activeTab, setActiveTab] = useState('overview');
-  const [submissions, setSubmissions] = useState([]);
-  const [userPosts, setUserPosts] = useState([]);
   const [showClearConfirm, setShowClearConfirm] = useState(false);
   const [editingProfile, setEditingProfile] = useState(false);
   const [showPaymentSystem, setShowPaymentSystem] = useState(false);
   const [paymentData, setPaymentData] = useState(null);
-  const [profileData, setProfileData] = useState({
+  const [successMessage, setSuccessMessage] = useState('');
+  const [profileDataState, setProfileData] = useState({
     name: '',
     email: '',
     phone: '',
@@ -37,29 +36,34 @@ const Profile = () => {
     location: '',
     website: ''
   });
-  const [successMessage, setSuccessMessage] = useState('');
+
+  // Derived state using useMemo to avoid setState in useEffect
+  const submissions = useMemo(() => getUserSubmissions(), [getUserSubmissions]);
+  const userPosts = useMemo(() => getUserPosts(), [getUserPosts]);
+  const profileData = useMemo(() => currentUser ? {
+    name: currentUser.name || '',
+    email: currentUser.email || '',
+    phone: currentUser.phone || '',
+    bio: currentUser.bio || '',
+    location: currentUser.location || '',
+    website: currentUser.website || ''
+  } : {
+    name: '',
+    email: '',
+    phone: '',
+    bio: '',
+    location: '',
+    website: ''
+  }, [currentUser]);
 
   useEffect(() => {
     if (location.state?.message) {
       setSuccessMessage(location.state.message);
-      setTimeout(() => setSuccessMessage(''), 5000);
+      setTimeout(() => {
+        setSuccessMessage('');
+      }, 5000);
     }
   }, [location]);
-
-  useEffect(() => {
-    if (currentUser) {
-      setSubmissions(getUserSubmissions());
-      setUserPosts(getUserPosts());
-      setProfileData({
-        name: currentUser.name || '',
-        email: currentUser.email || '',
-        phone: currentUser.phone || '',
-        bio: currentUser.bio || '',
-        location: currentUser.location || '',
-        website: currentUser.website || ''
-      });
-    }
-  }, [currentUser, getUserSubmissions, getUserPosts]);
 
   const handleLogout = () => {
     logout();
@@ -70,13 +74,13 @@ const Profile = () => {
   const userPayments = payments.filter(payment => payment.userId === currentUser?.id);
 
   // Payment system handlers
-  const handlePaymentSuccess = (payment) => {
+  const handlePaymentSuccess = (_payment) => {
     setSuccessMessage('Payment processed successfully!');
     setShowPaymentSystem(false);
     setPaymentData(null);
-    // Refresh user posts to update payment status
-    setUserPosts(getUserPosts());
-    setTimeout(() => setSuccessMessage(''), 5000);
+    setTimeout(() => {
+      setSuccessMessage('');
+    }, 5000);
   };
 
   const handlePaymentCancel = () => {
@@ -109,7 +113,6 @@ const Profile = () => {
     if (window.confirm('Are you sure you want to delete this post? This action cannot be undone.')) {
       const result = await deletePost(postId);
       if (result.success) {
-        setUserPosts(userPosts.filter(post => post.id !== postId));
         setSuccessMessage('Post deleted successfully!');
       } else {
         alert(result.error || 'Failed to delete post');

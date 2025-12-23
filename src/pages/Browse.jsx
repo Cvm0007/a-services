@@ -4,6 +4,91 @@ import products from '../data/products.json';
 import { FiFilter, FiGrid, FiList, FiChevronLeft, FiChevronRight, FiSearch, FiMapPin } from 'react-icons/fi';
 import useAuthStore from '../store/authStore';
 
+// Pagination component extracted outside
+const PaginationComponent = ({ currentPage, totalPages, setCurrentPage }) => {
+  if (totalPages <= 1) return null;
+
+  const pages = [];
+  const maxVisiblePages = 5;
+  
+  let startPage = Math.max(1, currentPage - Math.floor(maxVisiblePages / 2));
+  let endPage = Math.min(totalPages, startPage + maxVisiblePages - 1);
+  
+  if (endPage - startPage + 1 < maxVisiblePages) {
+    startPage = Math.max(1, endPage - maxVisiblePages + 1);
+  }
+
+  for (let i = startPage; i <= endPage; i++) {
+    pages.push(i);
+  }
+
+  return (
+    <div className="flex items-center justify-center space-x-2 mt-8">
+      <button
+        onClick={() => setCurrentPage(Math.max(1, currentPage - 1))}
+        disabled={currentPage === 1}
+        className={`p-2 rounded-lg border ${
+          currentPage === 1 
+            ? 'border-gray-200 text-gray-400 cursor-not-allowed'
+            : 'border-gray-300 text-gray-700 hover:bg-gray-50'
+        }`}
+      >
+        <FiChevronLeft className="w-4 h-4" />
+      </button>
+
+      {startPage > 1 && (
+        <>
+          <button
+            onClick={() => setCurrentPage(1)}
+            className="px-3 py-2 rounded-lg border border-gray-300 text-gray-700 hover:bg-gray-50"
+          >
+            1
+          </button>
+          {startPage > 2 && <span className="px-2 text-gray-500">...</span>}
+        </>
+      )}
+
+      {pages.map(page => (
+        <button
+          key={page}
+          onClick={() => setCurrentPage(page)}
+          className={`px-3 py-2 rounded-lg border ${
+            page === currentPage
+              ? 'border-primary-500 bg-primary-500 text-white'
+              : 'border-gray-300 text-gray-700 hover:bg-gray-50'
+          }`}
+        >
+          {page}
+        </button>
+      ))}
+
+      {endPage < totalPages && (
+        <>
+          {endPage < totalPages - 1 && <span className="px-2 text-gray-500">...</span>}
+          <button
+            onClick={() => setCurrentPage(totalPages)}
+            className="px-3 py-2 rounded-lg border border-gray-300 text-gray-700 hover:bg-gray-50"
+          >
+            {totalPages}
+          </button>
+        </>
+      )}
+
+      <button
+        onClick={() => setCurrentPage(Math.min(totalPages, currentPage + 1))}
+        disabled={currentPage === totalPages}
+        className={`p-2 rounded-lg border ${
+          currentPage === totalPages 
+            ? 'border-gray-200 text-gray-400 cursor-not-allowed'
+            : 'border-gray-300 text-gray-700 hover:bg-gray-50'
+        }`}
+      >
+        <FiChevronRight className="w-4 h-4" />
+      </button>
+    </div>
+  );
+};
+
 /**
  * Browse Page - Enhanced with pagination and advanced filtering
  * Features: Pagination (20 items per page), search integration, filtering, sorting
@@ -188,97 +273,12 @@ const Browse = ({ searchTerm }) => {
     </div>
   );
 
-  // Pagination controls
-  const Pagination = () => {
-    if (totalPages <= 1) return null;
-
-    const pages = [];
-    const maxVisiblePages = 5;
-    
-    let startPage = Math.max(1, currentPage - Math.floor(maxVisiblePages / 2));
-    let endPage = Math.min(totalPages, startPage + maxVisiblePages - 1);
-    
-    if (endPage - startPage + 1 < maxVisiblePages) {
-      startPage = Math.max(1, endPage - maxVisiblePages + 1);
-    }
-
-    for (let i = startPage; i <= endPage; i++) {
-      pages.push(i);
-    }
-
-    return (
-      <div className="flex items-center justify-center space-x-2 mt-8">
-        <button
-          onClick={() => setCurrentPage(Math.max(1, currentPage - 1))}
-          disabled={currentPage === 1}
-          className={`p-2 rounded-lg border ${
-            currentPage === 1 
-              ? 'border-gray-200 text-gray-400 cursor-not-allowed'
-              : 'border-gray-300 text-gray-700 hover:bg-gray-50'
-          }`}
-        >
-          <FiChevronLeft className="w-4 h-4" />
-        </button>
-
-        {startPage > 1 && (
-          <>
-            <button
-              onClick={() => setCurrentPage(1)}
-              className="px-3 py-2 rounded-lg border border-gray-300 text-gray-700 hover:bg-gray-50"
-            >
-              1
-            </button>
-            {startPage > 2 && <span className="px-2 text-gray-500">...</span>}
-          </>
-        )}
-
-        {pages.map(page => (
-          <button
-            key={page}
-            onClick={() => setCurrentPage(page)}
-            className={`px-3 py-2 rounded-lg border ${
-              page === currentPage
-                ? 'border-primary-500 bg-primary-500 text-white'
-                : 'border-gray-300 text-gray-700 hover:bg-gray-50'
-            }`}
-          >
-            {page}
-          </button>
-        ))}
-
-        {endPage < totalPages && (
-          <>
-            {endPage < totalPages - 1 && <span className="px-2 text-gray-500">...</span>}
-            <button
-              onClick={() => setCurrentPage(totalPages)}
-              className="px-3 py-2 rounded-lg border border-gray-300 text-gray-700 hover:bg-gray-50"
-            >
-              {totalPages}
-            </button>
-          </>
-        )}
-
-        <button
-          onClick={() => setCurrentPage(Math.min(totalPages, currentPage + 1))}
-          disabled={currentPage === totalPages}
-          className={`p-2 rounded-lg border ${
-            currentPage === totalPages 
-              ? 'border-gray-200 text-gray-400 cursor-not-allowed'
-              : 'border-gray-300 text-gray-700 hover:bg-gray-50'
-          }`}
-        >
-          <FiChevronRight className="w-4 h-4" />
-        </button>
-      </div>
-    );
-  };
-
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="flex flex-col lg:flex-row gap-8">
         {/* Filters Sidebar */}
-        <aside className="lg:w-64">
-          <div className="bg-white rounded-lg shadow p-6">
+        <aside className="w-full lg:w-64 flex-shrink-0">
+          <div className="bg-white rounded-lg shadow-md p-6">
             <div className="flex items-center justify-between mb-4">
               <h3 className="font-semibold text-lg">Filters</h3>
               <button
@@ -424,7 +424,11 @@ const Browse = ({ searchTerm }) => {
                   <ProductCard key={product.id} product={product} />
                 ))}
               </div>
-              <Pagination />
+              <PaginationComponent 
+                currentPage={currentPage} 
+                totalPages={totalPages} 
+                setCurrentPage={setCurrentPage} 
+              />
             </>
           ) : (
             <div className="text-center py-12">

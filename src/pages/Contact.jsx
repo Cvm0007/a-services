@@ -35,6 +35,7 @@ const Contact = () => {
     setIsSubmitting(true);
     
     // Simulate form submission (in real app, this would send to a server)
+    console.log('Form submitted:', data);
     await new Promise(resolve => setTimeout(resolve, 1000));
     
     setSubmitSuccess(true);

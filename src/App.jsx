@@ -18,15 +18,21 @@ import PrivacyPolicy from './pages/PrivacyPolicy';
 import Disclaimer from './pages/Disclaimer';
 import RefundPolicy from './pages/RefundPolicy';
 import ProtectedRoute from './components/ProtectedRoute';
+import SearchModal from './components/SearchModal';
 import './index.css';
 
 function App() {
   const [searchTerm, setSearchTerm] = useState('');
+  const [isSearchModalOpen, setIsSearchModalOpen] = useState(false);
+
+  const handleSearchClick = () => {
+    setIsSearchModalOpen(true);
+  };
 
   return (
     <Router>
       <div className="min-h-screen flex flex-col">
-        <Header searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+        <Header searchTerm={searchTerm} setSearchTerm={setSearchTerm} onSearchClick={handleSearchClick} />
         <main className="flex-grow">
           <Routes>
             <Route path="/" element={<Home />} />
@@ -34,9 +40,9 @@ function App() {
             <Route 
               path="/product/:id" 
               element={
-                <ProtectedRoute>
+                // <ProtectedRoute>
                   <ProductDetail />
-                </ProtectedRoute>
+                // </ProtectedRoute>
               } 
             />
             <Route path="/signup" element={<Signup />} />
@@ -76,6 +82,10 @@ function App() {
           </Routes>
         </main>
         <Footer />
+        <SearchModal 
+          isOpen={isSearchModalOpen} 
+          onClose={() => setIsSearchModalOpen(false)} 
+        />
       </div>
     </Router>
   );

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useMemo } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import products from '../data/products.json';
 import { FiStar, FiShoppingBag, FiShield, FiTruck, FiSearch, FiMapPin, FiFilter, FiDollarSign } from 'react-icons/fi';
@@ -18,15 +18,14 @@ const Home = () => {
   
   const [isSearchModalOpen, setIsSearchModalOpen] = useState(false);
   const [searchFilters, setSearchFilters] = useState({});
-  const [featuredProducts, setFeaturedProducts] = useState([]);
   
   // Get approved posts from store
   const approvedPosts = getAllPosts({ status: 'approved' });
   
-  useEffect(() => {
-    // Combine products.json data with approved posts from store
+  // Combine products.json data with approved posts from store using useMemo
+  const featuredProducts = useMemo(() => {
     const combinedProducts = [...products, ...approvedPosts.filter(post => !products.find(p => p.id === post.id))];
-    setFeaturedProducts(combinedProducts.slice(0, 6));
+    return combinedProducts.slice(0, 6);
   }, [approvedPosts]);
 
   /**
@@ -56,7 +55,7 @@ const Home = () => {
 
   return (
     <div className="min-h-screen">
-      {/* Enhanced Hero Section with increased height and search functionality */}
+      {/* 1 Enhanced Hero Section with increased height and search functionality */}
       <section
         className="relative text-white py-32 bg-cover bg-center bg-no-repeat"
         style={{
@@ -69,16 +68,16 @@ const Home = () => {
         <div className="relative container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
-              Discover Amazing
+              {/* Discover Amazing */}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-300 to-secondary-300">
-                {" "}Massage Services
+                {" "} ........... All Services
               </span>
             </h1>
 
-            <p className="text-xl md:text-2xl mb-12 text-primary-100 max-w-3xl mx-auto leading-relaxed">
+            {/* <p className="text-xl md:text-2xl mb-12 text-primary-100 max-w-3xl mx-auto leading-relaxed">
               All sessions are conducted by certified therapists using premium quality oils and hygienic equipment.
               Ideal for stress relief, muscle relaxation, and overall wellness.
-            </p>
+            </p> */}
 
             {/* Enhanced Search Section */}
             <div className="bg-white/10 backdrop-blur-md rounded-2xl p-8 mb-8">
@@ -88,7 +87,7 @@ const Home = () => {
                     <FiSearch className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white/70 w-5 h-5" />
                     <input
                       type="text"
-                      placeholder="Search for services, locations, or keywords..."
+                      placeholder="Search for services or locations..."
                       className="w-full pl-12 pr-4 py-4 bg-white/20 backdrop-blur border border-white/30 rounded-xl text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent"
                       onKeyPress={(e) => {
                         if (e.key === 'Enter') {
@@ -109,7 +108,7 @@ const Home = () => {
               
               {/* Quick Search Tags */}
               <div className="flex flex-wrap gap-2 justify-center">
-                {['Massage Therapy', 'Body Massage', 'Delhi', 'Mumbai', 'Luxury Spa', 'Corporate Wellness'].map(term => (
+                {['Wellness', 'Spa', 'Relaxation', 'Mumbai', 'Delhi', 'Bengaluru'].map(term => (
                   <button
                     key={term}
                     onClick={() => handleQuickSearch(term)}
@@ -141,10 +140,10 @@ const Home = () => {
                 </Link>
               ) : (
                 <Link
-                  to="/signup"
+                  to="/login"
                   className="px-8 py-4 border-2 border-white text-white hover:bg-white hover:text-primary-600 rounded-xl font-semibold transition-all"
                 >
-                  Get Started
+                  Post Your Ad !
                 </Link>
               )}
             </div>
@@ -152,7 +151,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Search Modal */}
+      {/* 2 Search Modal */}
       <SearchModal
         isOpen={isSearchModalOpen}
         onClose={() => setIsSearchModalOpen(false)}
@@ -160,7 +159,7 @@ const Home = () => {
         initialFilters={searchFilters}
       />
 
-      {/* Trust Badges */}
+      {/* 3 Trust Badges */}
       <section className="bg-gray-50 py-12">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
@@ -188,7 +187,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Featured Products */}
+      {/* 4 Featured Products */}
       <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
@@ -241,7 +240,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Categories */}
+      {/* 5 Categories */}
       <section className="bg-gray-50 py-16">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
@@ -268,7 +267,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* CTA Section */}
+      {/* 6 CTA Section */}
       <section className="bg-secondary-600 text-white py-16">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-4">Ready to Find the Perfect Service?</h2>
