@@ -1,24 +1,14 @@
 import { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import products from '../data/products.json';
-import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
-import { FiArrowLeft, FiCalendar, FiClock, FiUser, FiMail, FiPhone, FiMessageSquare } from 'react-icons/fi';
+import { FiArrowLeft, FiPhone, FiMessageSquare, FiAlertTriangle, FiAlertOctagon, FiExternalLink } from 'react-icons/fi';
+import { FaWhatsapp } from 'react-icons/fa';
 import useAuthStore from '../store/authStore';
 
-/**
- * Validation schema for the contact form
- * Ensures all required fields are properly filled with valid data
- */
-const schema = yup.object().shape({
-  name: yup.string().required('Name is required'),
-  email: yup.string().email('Invalid email').required('Email is required'),
-  phone: yup.string().required('Phone number is required'),
-  preferredDate: yup.string().required('Preferred date is required'),
-  preferredTime: yup.string().required('Preferred time is required'),
-  message: yup.string().required('Message is required'),
-});
+// Format phone number for WhatsApp
+const formatPhoneNumber = (phone) => {
+  return phone.replace(/[^\d+]/g, '');
+};
 
 /**
  * Product Detail Page - Comprehensive service listing and booking interface
@@ -30,30 +20,38 @@ const ProductDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   
-  // Store functions and state
-  const submitContactForm = useAuthStore((state) => state.submitContactForm);
+  // Store user state
   const currentUser = useAuthStore((state) => state.currentUser);
   
   // Component state management
   const [product] = products.find(p => p.id === parseInt(id)) ? [products.find(p => p.id === parseInt(id))] : [null];
   const [selectedImage, setSelectedImage] = useState(0); // Track selected image in gallery
-  const [isSubmitting, setIsSubmitting] = useState(false); // Form submission state
-  const [submitSuccess, setSubmitSuccess] = useState(false); // Success message state
 
-  // React Hook Form configuration with validation
-  const {
-    register,
-    handleSubmit,
-    formState: { errors }
-  } = useForm({
-    resolver: yupResolver(schema),
-    defaultValues: {
-      // Pre-fill form with current user data if available
-      name: currentUser?.name || '',
-      email: currentUser?.email || '',
-      phone: currentUser?.phone || '',
+  // Handle call button click
+  const handleCall = () => {
+    if (product && product.phone) {
+      window.location.href = `tel:${formatPhoneNumber(product.phone)}`;
+    } else {
+      alert('Phone number not available for this service');
     }
-  });
+  };
+
+  // Handle WhatsApp button click
+  const handleWhatsApp = () => {
+    if (product && product.phone) {
+      const message = `Hi, I'm interested in your service: ${product.title}`;
+      const whatsappUrl = `https://wa.me/${formatPhoneNumber(product.phone)}?text=${encodeURIComponent(message)}`;
+      window.open(whatsappUrl, '_blank');
+    } else {
+      alert('WhatsApp number not available for this service');
+    }
+  };
+
+  // Handle report fraud click
+  const handleReportFraud = () => {
+    window.location.href = 'mailto:report@adultservices.com?subject=Report%20Suspicious%20Activity';
+  };
+
 
   // Handle case where product doesn't exist
   if (!product) {
@@ -160,161 +158,92 @@ const ProductDetail = () => {
 
           {/* Product Details */}
           <div className="mb-6">
-            <h3 className="font-semibold mb-3">Product Details</h3>
+            <h3 className="font-semibold mb-3">Service  Details</h3>
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <span className="text-gray-600">Material:</span>
+                <span className="text-primary-600 ">Available Now ! </span>
                 <span className="ml-2 font-medium">{product.material}</span>
               </div>
               <div>
-                <span className="text-gray-600">Category:</span>
+                <span className="text-primary-600">Category:</span>
                 <span className="ml-2 font-medium">{product.tags.join(', ')}</span>
               </div>
             </div>
           </div>
 
-          {/* Contact Form */}
-          {!submitSuccess ? (
-            <div className="bg-gray-50 rounded-lg p-6">
-              <h3 className="text-xl font-semibold mb-4">Request More Information</h3>
-              <p className="text-gray-600 mb-6">
-                Fill out the form below to schedule an appointment or get more details about this product.
-              </p>
-
-              <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
-                      Name
-                    </label>
-                    <div className="relative">
-                      <FiUser className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
-                      <input
-                        {...register('name')}
-                        type="text"
-                        className="input-field pl-10"
-                        placeholder="Your name"
-                      />
-                    </div>
-                    {errors.name && (
-                      <p className="text-red-500 text-sm mt-1">{errors.name.message}</p>
-                    )}
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
-                      Email
-                    </label>
-                    <div className="relative">
-                      <FiMail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
-                      <input
-                        {...register('email')}
-                        type="email"
-                        className="input-field pl-10"
-                        placeholder="Your email"
-                      />
-                    </div>
-                    {errors.email && (
-                      <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>
-                    )}
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
-                      Phone
-                    </label>
-                    <div className="relative">
-                      <FiPhone className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
-                      <input
-                        {...register('phone')}
-                        type="tel"
-                        className="input-field pl-10"
-                        placeholder="Your phone"
-                      />
-                    </div>
-                    {errors.phone && (
-                      <p className="text-red-500 text-sm mt-1">{errors.phone.message}</p>
-                    )}
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
-                      Preferred Date
-                    </label>
-                    <div className="relative">
-                      <FiCalendar className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
-                      <input
-                        {...register('preferredDate')}
-                        type="date"
-                        className="input-field pl-10"
-                      />
-                    </div>
-                    {errors.preferredDate && (
-                      <p className="text-red-500 text-sm mt-1">{errors.preferredDate.message}</p>
-                    )}
-                  </div>
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
-                    Preferred Time
-                  </label>
-                  <div className="relative">
-                    <FiClock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
-                    <input
-                      {...register('preferredTime')}
-                      type="time"
-                      className="input-field pl-10"
-                    />
-                  </div>
-                  {errors.preferredTime && (
-                    <p className="text-red-500 text-sm mt-1">{errors.preferredTime.message}</p>
-                  )}
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
-                    Message
-                  </label>
-                  <div className="relative">
-                    <FiMessageSquare className="absolute left-3 top-3 text-gray-400" />
-                    <textarea
-                      {...register('message')}
-                      rows="4"
-                      className="input-field pl-10 resize-none"
-                      placeholder="Tell us what you'd like to know about this product..."
-                    ></textarea>
-                  </div>
-                  {errors.message && (
-                    <p className="text-red-500 text-sm mt-1">{errors.message.message}</p>
-                  )}
-                </div>
-
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="btn-primary w-full py-3 disabled:opacity-50 disabled:cursor-not-allowed"
-                >
-                  {isSubmitting ? 'Submitting...' : 'Submit Request'}
-                </button>
-              </form>
-            </div>
-          ) : (
-            <div className="bg-green-50 border border-green-200 rounded-lg p-6 text-center">
-              <h3 className="text-xl font-semibold text-green-800 mb-2">Request Submitted!</h3>
-              <p className="text-green-700 mb-4">
-                Thank you for your interest. We'll contact you soon to schedule your appointment.
-              </p>
+          {/* Contact Options */}
+          <div className="bg-white rounded-lg shadow-md p-6 mb-6">
+            <h3 className="text-xl font-semibold mb-4">Contact Service Provider</h3>
+            <p className="text-gray-600 mb-6">
+              Get in touch directly with the service provider for more information or to book an appointment.
+            </p>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
               <button
-                onClick={() => navigate('/profile')}
-                className="btn-primary"
+                onClick={handleCall}
+                className="flex items-center justify-center space-x-2 bg-green-600 hover:bg-green-700 text-white font-medium py-3 px-6 rounded-lg transition-colors"
               >
-                View My Requests
+                <FiPhone className="w-5 h-5" />
+                <span>Call Now</span>
+              </button>
+              
+              <button
+                onClick={handleWhatsApp}
+                className="flex items-center justify-center space-x-2 bg-[#25D366] hover:bg-[#128C7E] text-white font-medium py-3 px-6 rounded-lg transition-colors"
+              >
+                <FaWhatsapp className="w-5 h-5" />
+                <span>WhatsApp</span>
               </button>
             </div>
-          )}
+            
+            <div className="flex items-center text-sm text-gray-500">
+              <FiMessageSquare className="w-4 h-4 mr-2" />
+              <span>Response time: Usually within 1 hour</span>
+            </div>
+          </div>
+
+          {/* Safety and Trust Section */}
+          <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-6 rounded-r-lg">
+            <div className="flex">
+              <div className="flex-shrink-0">
+                <FiAlertTriangle className="h-5 w-5 text-yellow-500" />
+              </div>
+              <div className="ml-3">
+                <h3 className="text-sm font-medium text-yellow-800">Safety First</h3>
+                <div className="mt-2 text-sm text-yellow-700">
+                  <p>
+                    • Always meet in public places for the first time<br />
+                    • Never share personal financial information<br />
+                    • Trust your instincts and report any suspicious activity
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Report Fraud Section */}
+          <div className="bg-red-50 border-l-4 border-red-400 p-4 rounded-r-lg">
+            <div className="flex">
+              <div className="flex-shrink-0">
+                <FiAlertOctagon className="h-5 w-5 text-red-500" />
+              </div>
+              <div className="ml-3">
+                <h3 className="text-sm font-medium text-red-800">Report Suspicious Activity</h3>
+                <div className="mt-2 text-sm text-red-700">
+                  <p className="mb-2">
+                    If you encounter any suspicious behavior or believe this listing violates our terms, please report it immediately.
+                  </p>
+                  <button
+                    onClick={handleReportFraud}
+                    className="inline-flex items-center text-red-700 hover:text-red-900 font-medium"
+                  >
+                    <span>Report to <b>Admin</b></span>
+                    <FiExternalLink className="ml-1 w-4 h-4" />
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

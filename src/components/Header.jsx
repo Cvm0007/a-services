@@ -1,19 +1,22 @@
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
-import { FiSearch, FiUser, FiLogOut, FiMenu, FiX, FiPlusCircle, FiPhone, FiMail } from 'react-icons/fi';
+import { FiSearch, FiUser, FiLogOut, FiMenu, FiX, FiPlusCircle } from 'react-icons/fi';
 import useAuthStore from '../store/authStore';
+import SearchModal from './SearchModal';
+import logo from '../assets/logo.png';
 
 /**
  * Enhanced Header Component - Professional navigation with search and post ad functionality
  * Features: Responsive design, user authentication, admin access, post ad button
  * Can be modified: Add new navigation items, change styling, modify mobile menu behavior
  */
-const Header = ({ searchTerm, setSearchTerm, onSearchClick }) => {
+const Header = () => {
   const currentUser = useAuthStore((state) => state.currentUser);
   const logout = useAuthStore((state) => state.logout);
   const location = useLocation();
   const navigate = useNavigate();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isSearchModalOpen, setIsSearchModalOpen] = useState(false);
 
   /**
    * Handle user logout and redirect to home
@@ -53,21 +56,43 @@ const Header = ({ searchTerm, setSearchTerm, onSearchClick }) => {
     navigate('/post-ad');
   };
 
+  /**
+   * Handle search from modal - navigate to browse page with filters
+   */
+  const handleSearch = (filters) => {
+    // Build query string from filters
+    const queryParams = new URLSearchParams();
+    Object.entries(filters).forEach(([key, value]) => {
+      if (value && value !== '') {
+        queryParams.append(key, value);
+      }
+    });
+    
+    // Navigate to browse page with search parameters
+    navigate(`/browse?${queryParams.toString()}`);
+    setIsSearchModalOpen(false);
+  };
+
+  // Toggle search modal
+  const toggleSearchModal = () => {
+    setIsSearchModalOpen(!isSearchModalOpen);
+  };
+
   return (
-    <header className="bg-white shadow-lg sticky top-0 z-50 border-b border-gray-200">
+    <header className="bg-gradient-to-r from-gray-900 to-gray-800 shadow-xl sticky top-0 z-50">
       <div className="container mx-auto px-4">
         {/* Main Header Bar */}
         <div className="flex items-center justify-between h-20">
           {/* Enhanced Logo with Branding */}
           <Link to="/" className="flex items-center space-x-3 group">
-            <div className="w-12 h-12 bg-gradient-to-r from-primary-600 to-secondary-600 rounded-xl flex items-center justify-center transform transition-transform group-hover:scale-105 shadow-lg">
-              <span className="text-white font-bold text-xl">A</span>
+            <div className="w-14 h-14 bg-white/10 backdrop-blur-sm rounded-xl flex items-center justify-center transform transition-transform group-hover:scale-105 shadow-lg border border-white/10 overflow-hidden">
+              <img src={logo} alt="Logo" className="w-full h-full object-contain " />
             </div>
             <div>
-              <span className="text-2xl font-bold text-gray-900 group-hover:text-primary-600 transition-colors">
-                A-Toy Services
+              <span className="text-2xl font-bold text-white group-hover:text-primary-300 transition-colors">
+                Adult Services
               </span>
-              <div className="text-xs text-gray-500">Professional Massage & Wellness</div>
+              <div className="text-xs text-gray-300">Professional Massage & Wellness</div>
             </div>
           </Link>
 
@@ -123,17 +148,17 @@ const Header = ({ searchTerm, setSearchTerm, onSearchClick }) => {
           <div className="hidden lg:flex items-center space-x-4">
             {/* Search Button */}
             <button
-              onClick={onSearchClick}
-              className="flex items-center space-x-2 px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors"
+              onClick={toggleSearchModal}
+              className="flex items-center space-x-2 px-4 py-2 bg-white/10 hover:bg-white/20 text-white rounded-lg transition-colors backdrop-blur-sm"
             >
-              <FiSearch className="w-5 h-5 text-gray-600" />
-              <span className="text-gray-700 font-medium">Search</span>
+              <FiSearch className="w-5 h-5 text-white" />
+              <span className="text-white font-medium">Search</span>
             </button>
 
             {/* Post Ad Button */}
             <button
               onClick={handlePostAdClick}
-              className="flex items-center space-x-2 px-4 py-2 bg-gradient-to-r from-primary-600 to-secondary-600 text-white rounded-lg hover:from-primary-700 hover:to-secondary-700 transition-all transform hover:scale-105 shadow-md"
+              className="flex items-center space-x-2 px-4 py-2.5 bg-gradient-to-r from-primary-500 to-primary-600 text-white rounded-lg hover:from-primary-600 hover:to-primary-700 transition-all transform hover:scale-105 shadow-lg shadow-primary-500/20"
             >
               <FiPlusCircle className="w-5 h-5" />
               <span className="font-medium">Post Ad</span>
@@ -194,7 +219,7 @@ const Header = ({ searchTerm, setSearchTerm, onSearchClick }) => {
             <div className="mb-6">
               <button
                 onClick={() => {
-                  onSearchClick();
+                  toggleSearchModal();
                   setMobileMenuOpen(false);
                 }}
                 className="w-full flex items-center justify-center space-x-2 px-4 py-3 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors"
@@ -319,6 +344,13 @@ const Header = ({ searchTerm, setSearchTerm, onSearchClick }) => {
           </div>
         )}
       </div>
+
+      {/* Search Modal */}
+      <SearchModal 
+        isOpen={isSearchModalOpen} 
+        onClose={() => setIsSearchModalOpen(false)} 
+        onSearch={handleSearch}
+      />
     </header>
   );
 };

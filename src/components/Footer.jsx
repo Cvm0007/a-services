@@ -17,20 +17,20 @@ const Footer = () => {
               <div className="w-8 h-8 bg-primary-600 rounded-lg flex items-center justify-center">
                 <span className="text-white font-bold text-lg">A</span>
               </div>
-              <span className="text-xl font-bold">Toy Services</span>
+              <span className="text-xl text-primary-400 font-bold">Adult Services</span>
             </div>
             <p className="text-gray-300 mb-4">
               Your trusted platform for professional wellness and therapeutic services. 
               Connecting qualified service providers with customers seeking quality care and relaxation.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="text-gray-300 hover:text-white transition-colors">
+              <a href="#" className="text-primary-400 hover:text-white transition-colors">
                 <FiFacebook className="w-5 h-5" />
               </a>
-              <a href="#" className="text-gray-300 hover:text-white transition-colors">
+              <a href="#" className="text-primary-400 hover:text-white transition-colors">
                 <FiTwitter className="w-5 h-5" />
               </a>
-              <a href="#" className="text-gray-300 hover:text-white transition-colors">
+              <a href="#" className="text-primary-400 hover:text-white transition-colors">
                 <FiInstagram className="w-5 h-5" />
               </a>
             </div>
@@ -38,7 +38,7 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
+            <h3 className="text-lg text-primary-400 font-semibold mb-4">Quick Links</h3>
             <ul className="space-y-2">
               <li>
                 <Link to="/" className="text-gray-300 hover:text-white transition-colors">
@@ -70,7 +70,7 @@ const Footer = () => {
 
           {/* Services */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">Services</h3>
+            <h3 className="text-lg text-primary-400 font-semibold mb-4">Services</h3>
             <ul className="space-y-2">
               <li>
                 <Link to="/browse?category=massage" className="text-gray-300 hover:text-white transition-colors">
@@ -97,7 +97,7 @@ const Footer = () => {
 
           {/* Contact Info */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">Contact Info</h3>
+            <h3 className="text-lg text-primary-400 font-semibold mb-4">Contact Info</h3>
             <div className="space-y-3">
               <div className="flex items-center space-x-3">
                 <FiMail className="w-5 h-5 text-primary-400" />
@@ -111,6 +111,18 @@ const Footer = () => {
                 <FiMapPin className="w-5 h-5 text-primary-400" />
                 <span className="text-gray-300">123 AToy Street, Fun City, FC 12345</span>
               </div>
+              
+              {/* Back to Top Button */}
+              <button 
+                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                className="mt-6 flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-r from-primary-600 to-secondary-600 text-white hover:from-primary-700 hover:to-secondary-700 transition-all transform hover:scale-105 shadow-lg"
+                aria-label="Back to top"
+                title="Back to top"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />
+                </svg>
+              </button>
             </div>
           </div>
         </div>
@@ -119,7 +131,7 @@ const Footer = () => {
         <div className="border-t border-gray-800 mt-8 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="text-gray-300 text-sm mb-4 md:mb-0">
-              © 2025 A Toy Services. All rights reserved.
+              © 2025 Adult  Services. All rights reserved.
             </div>
             <div className="flex flex-wrap space-x-6 text-sm">
               <Link to="/privacy-policy" className="text-gray-300 hover:text-white transition-colors">
@@ -140,7 +152,7 @@ const Footer = () => {
 
         {/* Disclaimer */}
         <div className="mt-6 p-4 bg-gray-800 rounded-lg">
-          <p className="text-gray-300 text-sm text-center">
+          <p className="text-primary-400 text-sm text-center">
             <strong>Important Notice:</strong> All appointment requests are handled manually offline. 
             No payments are processed online through this website. For product inquiries and appointments, 
             please use our contact forms or call us directly.
