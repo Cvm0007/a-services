@@ -48,9 +48,9 @@ const Contact = () => {
       <section className="bg-gradient-to-r from-primary-500 to-primary-600 text-white py-20">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">Contact Us</h1>
+            <h1 className="text-4xl md:text-5xl font-bold mb-6">Connect to Us</h1>
             <p className="text-xl text-primary-100">
-              Have questions about our toys or services? We're here to help!
+              Have questions about our Adult services? We're here to help!
             </p>
           </div>
         </div>
@@ -69,7 +69,7 @@ const Contact = () => {
                 </div>
                 <div>
                   <h3 className="font-semibold text-lg mb-2">Email</h3>
-                  <p className="text-gray-600">info@etoyservices.com</p>
+                  <p className="text-gray-600">info@adultservices.com</p>
                   <p className="text-gray-600 text-sm">We'll respond within 24 hours</p>
                 </div>
               </div>
@@ -91,8 +91,8 @@ const Contact = () => {
                 </div>
                 <div>
                   <h3 className="font-semibold text-lg mb-2">Visit Us</h3>
-                  <p className="text-gray-600">123 Toy Street</p>
-                  <p className="text-gray-600">Fun City, FC 12345</p>
+                  <p className="text-gray-600">121 Adult Street</p>
+                  <p className="text-gray-600">Fun City, FC 323045</p>
                   <p className="text-gray-600 text-sm">By appointment only</p>
                 </div>
               </div>
@@ -200,7 +200,7 @@ const Contact = () => {
 
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Message
+                    Message
                     </label>
                     <div className="relative">
                       <FiMessageSquare className="absolute left-3 top-3 text-gray-400" />
@@ -208,7 +208,7 @@ const Contact = () => {
                         {...register('message')}
                         rows="5"
                         className="input-field pl-10 resize-none"
-                        placeholder="Tell us how we can help you..."
+                        placeholder="      Tell us how we can help you..."
                       ></textarea>
                     </div>
                     {errors.message && (

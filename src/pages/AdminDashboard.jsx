@@ -37,17 +37,48 @@ const AdminDashboard = () => {
     }
   }, [location]);
 
-  useEffect(() => {
-    if (currentUser?.role !== 'admin') {
-      navigate('/admin/login');
-      return;
-    }
+  // useEffect(() => {
+  //   if (currentUser?.role !== 'admin') {
+  //     navigate('/admin/login');
+  //     return;
+  //   }
 
-    // Load admin data
-    setUsers(getAllUsers());
-    setPosts(getAllPosts());
-    setStats(getSystemStats());
-  }, [currentUser, navigate, getAllUsers, getAllPosts, getSystemStats]);
+  //   // Load admin data
+  //   setUsers(getAllUsers());
+  //   setPosts(getAllPosts());
+  //   setStats(getSystemStats());
+  // }, [currentUser, navigate, getAllUsers, getAllPosts, getSystemStats]);
+
+    useEffect(() => {
+  // Check if user is admin
+  if (currentUser?.role !== 'admin') {
+    navigate('/login', { 
+      state: { 
+        from: '/admin/dashboard',
+        message: 'Please login as admin to access the dashboard' 
+      } 
+    });
+    return;
+  }
+
+  // Load admin data
+  const loadData = async () => {
+    try {
+      const usersData = getAllUsers();
+      const postsData = getAllPosts();
+      const statsData = getSystemStats();
+      
+      setUsers(usersData);
+      setPosts(postsData);
+      setStats(statsData);
+    } catch (error) {
+      console.error('Error loading admin data:', error);
+    }
+  };
+
+  loadData();
+}, [currentUser, navigate, getAllUsers, getAllPosts, getSystemStats]);
+
 
   /**
    * Handle admin logout

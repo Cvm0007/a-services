@@ -7,7 +7,7 @@ const About = () => {
       <section className="bg-gradient-to-r from-primary-500 to-primary-600 text-white py-20">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">About A Toy Services</h1>
+            <h1 className="text-4xl md:text-5xl font-bold mb-6">About Adult Services</h1>
             <p className="text-xl text-primary-100">
               Your trusted partner for quality, safe, and educational toys that inspire creativity and learning.
             </p>
@@ -22,7 +22,7 @@ const About = () => {
             <h2 className="text-3xl font-bold mb-6 text-center">Our Story</h2>
             <div className="prose prose-lg max-w-none">
               <p className="text-gray-700 leading-relaxed mb-4">
-                Founded in 2024, E-Toy Services began with a simple mission: to provide parents with access to 
+                Founded in 2020, Adult Services began with a simple mission: to provide parents with access to 
                 high-quality, safe, and educational toys that support child development. We understand that choosing 
                 the right toys for your children is important, and we're here to make that process easier.
               </p>

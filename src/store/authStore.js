@@ -45,7 +45,8 @@ const useAuthStore = create(
               email: adminCredentials.email,
               role: 'admin',
               adminId: adminCredentials.adminId,
-              permissions: ['user_management', 'post_management', 'payment_management', 'system_settings']
+              permissions: ['user_management', 'post_management', 'payment_management', 'system_settings'],
+              isAdmin: true  // Add this line
             };
             set({ currentUser: adminUser });
             return { success: true, user: adminUser, isAdmin: true };

@@ -101,7 +101,7 @@ const Footer = () => {
             <div className="space-y-3">
               <div className="flex items-center space-x-3">
                 <FiMail className="w-5 h-5 text-primary-400" />
-                <span className="text-gray-300">info@atoyservices.com</span>
+                <span className="text-gray-300">info@adultservices.com</span>
               </div>
               <div className="flex items-center space-x-3">
                 <FiPhone className="w-5 h-5 text-primary-400" />
@@ -109,7 +109,7 @@ const Footer = () => {
               </div>
               <div className="flex items-center space-x-3">
                 <FiMapPin className="w-5 h-5 text-primary-400" />
-                <span className="text-gray-300">123 AToy Street, Fun City, FC 12345</span>
+                <span className="text-gray-300">121 Adult Street, Fun City, FC 323045</span>
               </div>
               
               {/* Back to Top Button */}

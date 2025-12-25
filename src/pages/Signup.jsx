@@ -78,7 +78,7 @@ const Signup = () => {
               <FiUser className="w-8 h-8 text-white" />
             </div>
             <h2 className="text-3xl font-bold text-gray-900">Create Account</h2>
-            <p className="text-gray-600 mt-2">Join A-Toy Services today</p>
+            <p className="text-gray-600 mt-2">Join Adult Services today</p>
           </div>
 
           {/* Error Message */}
@@ -101,7 +101,7 @@ const Signup = () => {
                   {...register('name')}
                   type="text"
                   className="input-field pl-10"
-                  placeholder="Enter your full name"
+                  placeholder="     Enter your full name"
                 />
               </div>
               {errors.name && (
@@ -120,7 +120,7 @@ const Signup = () => {
                   {...register('email')}
                   type="email"
                   className="input-field pl-10"
-                  placeholder="Enter your email"
+                  placeholder="     Enter your email"
                 />
               </div>
               {errors.email && (
@@ -155,7 +155,7 @@ const Signup = () => {
                   {...register('password')}
                   type={showPassword ? 'text' : 'password'}
                   className="input-field pl-10 pr-10"
-                  placeholder="Create a password"
+                  placeholder="     Create a password"
                 />
                 <button
                   type="button"
@@ -181,7 +181,7 @@ const Signup = () => {
                   {...register('confirmPassword')}
                   type={showConfirmPassword ? 'text' : 'password'}
                   className="input-field pl-10 pr-10"
-                  placeholder="Confirm your password"
+                  placeholder="     Confirm your password"
                 />
                 <button
                   type="button"

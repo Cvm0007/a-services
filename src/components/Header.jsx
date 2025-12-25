@@ -85,8 +85,9 @@ const Header = () => {
         <div className="flex items-center justify-between h-20">
           {/* Enhanced Logo with Branding */}
           <Link to="/" className="flex items-center space-x-3 group">
-            <div className="w-14 h-14 bg-white/10 backdrop-blur-sm rounded-xl flex items-center justify-center transform transition-transform group-hover:scale-105 shadow-lg border border-white/10 overflow-hidden">
-              <img src={logo} alt="Logo" className="w-full h-full object-contain " />
+            <div className="w-14 h-14 bg-primary-600 backdrop-blur-sm rounded-xl flex items-center justify-center transform transition-transform group-hover:scale-105 shadow-lg border border-white/10 overflow-hidden">
+              {/* <img src={logo} alt="Logo" className="w-full h-full object-contain " /> */}
+              <span className="text-white font-bold text-lg">A</span>
             </div>
             <div>
               <span className="text-2xl font-bold text-white group-hover:text-primary-300 transition-colors">
@@ -151,14 +152,14 @@ const Header = () => {
               onClick={toggleSearchModal}
               className="flex items-center space-x-2 px-4 py-2 bg-white/10 hover:bg-white/20 text-white rounded-lg transition-colors backdrop-blur-sm"
             >
-              <FiSearch className="w-5 h-5 text-white" />
+              <FiSearch className="w-5 h-5 text-primary-500" />
               <span className="text-white font-medium">Search</span>
             </button>
 
             {/* Post Ad Button */}
             <button
               onClick={handlePostAdClick}
-              className="flex items-center space-x-2 px-4 py-2.5 bg-gradient-to-r from-primary-500 to-primary-600 text-white rounded-lg hover:from-primary-600 hover:to-primary-700 transition-all transform hover:scale-105 shadow-lg shadow-primary-500/20"
+              className="flex items-center space-x-2 px-4 py-2.5 bg-gradient-to-r from-primary-500 to-primary-600 text-white rounded-lg hover:from-primary-600 hover:to-blue transition-all transform hover:scale-105 shadow-lg shadow-primary-500/20"
             >
               <FiPlusCircle className="w-5 h-5" />
               <span className="font-medium">Post Ad</span>
@@ -171,7 +172,7 @@ const Header = () => {
                   to="/profile"
                   className="flex items-center space-x-2 text-gray-700 hover:text-primary-600 transition-colors px-3 py-2 rounded-lg hover:bg-gray-100"
                 >
-                  <FiUser className="w-5 h-5" />
+                  <FiUser className="w-5 h-5 text-primary-400" />
                   <span className="font-medium">{currentUser.name}</span>
                   {currentUser.role === 'admin' && (
                     <span className="text-xs bg-purple-100 text-purple-600 px-2 py-1 rounded-full">Admin</span>
@@ -181,7 +182,7 @@ const Header = () => {
                   onClick={handleLogout}
                   className="flex items-center space-x-2 text-gray-700 hover:text-red-600 transition-colors px-3 py-2 rounded-lg hover:bg-red-50"
                 >
-                  <FiLogOut className="w-5 h-5" />
+                  <FiLogOut className="w-5 h-5 text-primary-400" />
                   <span>Logout</span>
                 </button>
               </div>
@@ -194,10 +195,10 @@ const Header = () => {
                   Login
                 </Link> */}
                 <Link 
-                  to="/signup" 
-                  className="px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors font-medium"
+                  to="/signup"
+                  className="px-4 py-2 hover:bg-white rounded-md transition-colors font-medium"
                 >
-                  Sign Up
+                  <FiUser className="w-5 h-5 text-primary-400" />
                 </Link>
               </div>
             )}
