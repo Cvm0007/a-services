@@ -21,6 +21,8 @@ import ProtectedRoute from './components/ProtectedRoute';
 import SearchModal from './components/SearchModal';
 import './index.css';
 
+// import Snowfall from 'react-snowfall';
+
 function App() {
   const [searchTerm, setSearchTerm] = useState('');
   const [isSearchModalOpen, setIsSearchModalOpen] = useState(false);
@@ -30,6 +32,21 @@ function App() {
   };
 
   return (
+    <>
+    {/* <Snowfall
+        snowflakeCount={80}
+        radius={[10, 25]}
+        speed={[0.5, 1.5]}
+        wind={[-1, 1]}
+        style={{
+          position: 'fixed',
+          width: '100vw',
+          height: '100vh',
+          zIndex: 99999,
+          pointerEvents: 'none'
+        }}
+      /> */}
+
     <Router>
       <div className="min-h-screen flex flex-col">
         <Header searchTerm={searchTerm} setSearchTerm={setSearchTerm} onSearchClick={handleSearchClick} />
@@ -88,6 +105,7 @@ function App() {
         />
       </div>
     </Router>
+</>
   );
 }
 
